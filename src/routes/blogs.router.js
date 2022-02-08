@@ -1,7 +1,5 @@
 const { authenticateToken } = require('../services/jwt');
 
-const multer = require('multer');
-const upload = multer({ dest: '../../public' });
 const { Router } = require('express');
 const {
   httpGetAllBlogs,
