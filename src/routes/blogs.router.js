@@ -13,7 +13,7 @@ const blogsRouter = Router();
 
 blogsRouter.get('/', httpGetAllBlogs);
 blogsRouter.get('/:slug', httpGetSingleBlog);
-blogsRouter.post('/', authenticateToken, upload.single('image'), httpPostBlog);
+blogsRouter.post('/', authenticateToken, httpPostBlog);
 blogsRouter.put('/', authenticateToken, httpPutBlog);
 blogsRouter.delete('/:id', authenticateToken, httpDeleteBlog);
 
