@@ -4,7 +4,7 @@ const { createUser, checkUserCredentials } = require('../models/users.model');
 
 const authCreateUser = async (req, res) => {
   try {
-    const { username } = req.body;
+    const username = req.body?.username?.toLowerCase();
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     createUser(username, hashedPassword);
     res.status(400).json({ message: 'Success' });
@@ -14,19 +14,18 @@ const authCreateUser = async (req, res) => {
 };
 
 const authLogin = async (req, res) => {
-  const { username, password } = req.body;
+  const username = req.body?.username?.toLowerCase();
+  const { password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ message: 'Missing username or password' });
   }
   try {
     const user = await checkUserCredentials(username, password);
     if (user === true) {
-      return res
-        .status(200)
-        .json({
-          message: 'Username and password matched',
-          jwt: jwt.sign({ username }, process.env.SESSION_SECRET),
-        });
+      return res.status(200).json({
+        message: 'Username and password matched',
+        jwt: jwt.sign({ username }, process.env.SESSION_SECRET),
+      });
     } else if (user === false || user === 'Username not found') {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
