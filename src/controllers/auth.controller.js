@@ -35,13 +35,6 @@ const authLogin = async (req, res) => {
   }
 };
 
-const authLogout = async (req, res) => {
-  try {
-  } catch (e) {
-    res.status(500).json({ message: 'An unexpected error occurred' });
-  }
-};
-
 const authCallback = async (req, res) => {
   try {
   } catch (e) {
@@ -49,4 +42,4 @@ const authCallback = async (req, res) => {
   }
 };
 
-module.exports = { authLogin, authLogout, authCallback, authCreateUser };
+module.exports = { authLogin, authCallback, authCreateUser };
