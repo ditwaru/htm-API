@@ -4,7 +4,7 @@ const { createUser, checkUserCredentials } = require('../models/users.model');
 
 const authCreateUser = async (req, res) => {
   try {
-    const username = req.body?.username?.toLowerCase();
+    const username = req.body.username.toLowerCase();
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     createUser(username, hashedPassword);
     res.status(400).json({ message: 'Success' });
@@ -14,7 +14,7 @@ const authCreateUser = async (req, res) => {
 };
 
 const authLogin = async (req, res) => {
-  const username = req.body?.username?.toLowerCase();
+  const username = req.body.username.toLowerCase();
   const { password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ message: 'Missing username or password' });
