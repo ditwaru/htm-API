@@ -42,6 +42,7 @@ const saveEvent = async (event) => {
       upsert: true,
     });
   } catch (e) {
+    console.log({ modelEventsCatch: e });
     return e;
   }
 };

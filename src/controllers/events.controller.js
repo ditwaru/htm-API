@@ -10,9 +10,7 @@ const httpGetAllEvents = async (req, res) => {
   const { skip, limit } = getPagination(req.query);
   try {
     const events = await findAllEvents(skip, limit);
-    events.length
-      ? res.status(200).json(events)
-      : res.status(404).json({ message: 'Could not find events' });
+    events.length ? res.status(200).json(events) : res.status(404).json([]);
   } catch (e) {
     res.status(500).json({ message: 'An unexpected error occurred' });
   }
@@ -38,6 +36,7 @@ const httpPostEvent = async (req, res) => {
       ? res.status(201).json(body)
       : res.status(400).json({ message: 'invalid Request' });
   } catch (e) {
+    console.log({ controllerEventsCatch: e });
     res.status(500).json({ message: 'An unexpected error occurred' });
   }
 };

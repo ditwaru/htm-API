@@ -12,7 +12,7 @@ const httpGetAllBlogs = async (req, res) => {
     const blogs = await findAllBlogs(skip, limit);
     Object.keys(blogs).length
       ? res.status(200).json(blogs)
-      : res.status(404).json({ message: 'Could not find blogs' });
+      : res.status(404).json([]);
   } catch (e) {
     res.status(500).json({ message: 'An unexpected error occurred' });
   }
@@ -23,7 +23,7 @@ const httpGetSingleBlog = async (req, res) => {
     const blog = await findOneBlog(slug);
     blog.length
       ? res.status(200).json(blog)
-      : res.status(400).json({ message: 'Blog does not exist' });
+      : res.status(404).json({ message: 'Blog does not exist' });
   } catch (e) {
     res.status(500).json({ message: 'An unexpected error occurred' });
   }
@@ -37,7 +37,7 @@ const httpPostBlog = async (req, res) => {
       ? res.status(201).json(blog)
       : res.status(400).json({ message: 'Invalid request' });
   } catch (e) {
-    res.status(500);
+    res.status(500).json({ message: 'An unexpected error occurred' });
   }
 };
 
@@ -62,7 +62,7 @@ const httpPutBlog = async (req, res) => {
       ? res.status(200).json(blog)
       : res.status(400).json({ message: 'Invalid request' });
   } catch (e) {
-    res.status(500);
+    res.status(500).json({ message: 'An unexpected error occurred' });
   }
 };
 
