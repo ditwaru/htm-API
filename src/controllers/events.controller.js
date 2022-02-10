@@ -36,7 +36,6 @@ const httpPostEvent = async (req, res) => {
       ? res.status(201).json(body)
       : res.status(400).json({ message: 'invalid Request' });
   } catch (e) {
-    console.log({ controllerEventsCatch: e });
     res.status(500).json({ message: 'An unexpected error occurred' });
   }
 };

@@ -33,7 +33,7 @@ const saveEvent = async (event) => {
       slug: event.title
         .toLowerCase()
         .replace(/[^\w\s]/gi, '')
-        .replaceAll(' ', '-'),
+        .replace(/ /g, '-'),
     });
   }
 
@@ -43,7 +43,6 @@ const saveEvent = async (event) => {
       upsert: true,
     });
   } catch (e) {
-    console.log({ modelEventsCatch: e });
     return e;
   }
 };

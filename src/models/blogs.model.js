@@ -14,7 +14,7 @@ const saveBlog = async (blog) => {
       slug: blog.title
         .toLowerCase()
         .replace(/[^\w\s]/gi, '')
-        .replaceAll(' ', '-'),
+        .replace(/ /g, '-'),
     });
   }
 
