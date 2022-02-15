@@ -46,7 +46,7 @@ const findAllBlogs = async (skip, limit) => {
   try {
     return await blogs
       .find({}, { _id: 0, __v: 0 })
-      .sort({ title: 0 })
+      .sort({ published: 0 })
       .skip(skip)
       .limit(limit);
   } catch (e) {

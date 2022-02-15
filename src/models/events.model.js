@@ -28,7 +28,6 @@ const saveEvent = async (event) => {
     });
   }
   if (!event.slug) {
-    console.log({ event });
     Object.assign(event, {
       slug: event.title
         .toLowerCase()

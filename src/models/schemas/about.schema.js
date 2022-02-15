@@ -10,9 +10,15 @@ const aboutSchema = Schema({
     type: String,
     required: true,
   },
-  // banner: {
-  //   type: String
-  // }
+  bannerImages: {
+    type: [
+      {
+        height: Number,
+        width: Number,
+        url: String,
+      },
+    ],
+  },
   // image: {
   //   type: String,
   // },
