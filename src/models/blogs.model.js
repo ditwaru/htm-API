@@ -20,7 +20,7 @@ const saveBlog = async (blog) => {
 
   if (!blog.published) {
     Object.assign(blog, {
-      published: new Date(),
+      published: new Date().getTime(),
     });
   }
 
@@ -46,7 +46,7 @@ const findAllBlogs = async (skip, limit) => {
   try {
     return await blogs
       .find({}, { _id: 0, __v: 0 })
-      .sort({ published: 0 })
+      .sort({ published: -1 })
       .skip(skip)
       .limit(limit);
   } catch (e) {

@@ -14,7 +14,7 @@ const blogSchema = Schema({
     required: true,
   },
   published: {
-    type: String,
+    type: Number,
     required: true,
   },
   slug: {

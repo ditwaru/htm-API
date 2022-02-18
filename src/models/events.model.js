@@ -5,7 +5,7 @@ const findAllEvents = async (skip, limit) => {
   try {
     return await events
       .find({}, { _id: 0, __v: 0 })
-      .sort({ title: 1 })
+      .sort({ date: 1 })
       .skip(skip)
       .limit(limit);
   } catch (e) {
